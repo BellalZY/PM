@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <tabbar v-if="$route.meta.showTab">
+      <tabbaritem path="/management">
+        <img slot="item-icon" src="./assets/img/tabbar/management.svg" alt=""/>
+        <img slot="item-icon-active" src="./assets/img/tabbar/managementActive.svg" alt=""/>
+        <div slot="item-text">管理平台</div>
+      </tabbaritem>
+      <tabbaritem path="/discuss">
+        <img slot="item-icon" src="./assets/img/tabbar/discuss.svg" alt=""/>
+        <img slot="item-icon-active" src="./assets/img/tabbar/discussActive.svg" alt=""/>
+        <div slot="item-text">讨论区</div>
+      </tabbaritem>
+      <tabbaritem path="/personal">
+        <img slot="item-icon" src="./assets/img/tabbar/personal.svg" alt=""/>
+        <img slot="item-icon-active" src="./assets/img/tabbar/personalActive.svg" alt=""/>
+        <div slot="item-text">个人中心</div>
+      </tabbaritem>
+    </tabbar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import tabbar from './components/tabbar/tabbar'
+import tabbaritem from './components/tabbar/tabbarItem'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    tabbar,
+    tabbaritem,
   }
 }
 </script>
 
 <style>
+@import "assets/css/base.css";
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height:100%;
+  width:100%;
+  background: #dbefa1;
 }
+
 </style>
